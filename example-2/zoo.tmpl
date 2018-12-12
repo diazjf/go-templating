@@ -1,0 +1,17 @@
+{{ $cfg := . }}
+{{ $zoos := .Zoos }}
+
+Official Zoo's Report
+---------------------
+
+Report Generation Time: {{ $cfg.TimeGenerated }}
+ZooSoftware: ZooKeeper 0.1.2
+
+{{ range $index, $zoo := $zoos }}
+
+{{ $zoo.Name }}
+---------------
+{{ $acceptableAnimals := getAcceptableAnimals $zoo.Animals $zoo.Climate }}
+{{ range $animalIndex, $animal := $acceptableAnimals }}
+Animal {{ $animalIndex }}: {{ $animal.Name }}{{end}}
+{{ end }}

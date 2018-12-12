@@ -1,0 +1,15 @@
+{{ $cfg := . }}
+{{ $zoos := .Zoos }}
+
+Official Zoo's Report
+---------------------
+
+Report Generation Time: {{ $cfg.TimeGenerated }}
+ZooSoftware: ZooKeeper 0.1.1
+
+{{ range $index, $zoo := $zoos }}
+{{ $zoo.Name }}
+---------------
+{{ range $animalIndex, $animal := $zoo.Animals }}
+Animal {{ $animalIndex }}: {{ $animal.Name }}{{end}}
+{{ end }}
